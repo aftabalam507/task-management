@@ -1,11 +1,9 @@
+import { ThemeProvider } from "@mui/material";
 import "./App.css";
+import { darkTheme } from "./theme/darktheme";
 
 function App() {
-  return (
-    <>
-      <h1 className="text-center">Hello World !!</h1>
-    </>
-  );
+  return <ThemeProvider theme={darkTheme}>aftab alam</ThemeProvider>;
 }
 
 export default App;
