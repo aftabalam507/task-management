@@ -1,4 +1,4 @@
-package com.task.model;
+package com.user.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

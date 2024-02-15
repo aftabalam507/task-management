@@ -21,7 +21,7 @@ const TaskCard = () => {
             </div>
 
             <div className="flex flex-wrap gap-2 items-center">
-              {[1, 1, 1, 1].map((item) => (
+              {[1, 2, 3, 4].map((item) => (
                 <span
                   key={item}
                   className="py-1 px-5 rounded-full techStack techStack"

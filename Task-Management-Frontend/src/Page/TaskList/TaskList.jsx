@@ -5,8 +5,8 @@ const TaskList = () => {
   return (
     <div className=" w-[67vw]">
       <div className="space-y-3">
-        {[1, 1, 1, 1, 1, 1].map((item) => (
-          <TaskCard />
+        {[1, 2, 3, 4, 5, 6].map((item) => (
+          <TaskCard key={item} />
         ))}
       </div>
     </div>

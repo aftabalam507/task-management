@@ -1,4 +1,4 @@
-package com.task.config;
+package com.user.config;
 
 public class JwtConstant {
 	
