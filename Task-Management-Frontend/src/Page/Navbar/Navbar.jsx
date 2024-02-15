@@ -5,7 +5,7 @@ import React from "react";
 const Navbar = () => {
   return (
     <div className="">
-      <div className="containers z-10 sticky left-0 right-0 top-0 py-3 px-5 lg:px-10,  flex justify-between items-center ">
+      <div className="containers  z-10 fixed  left-0 right-0 top-0 py-3 px-5 lg:px-10,  flex justify-between items-center ">
         <p className="font-bold text-lg">Task Management</p>
 
         <div className="flex items-center gap-5">
