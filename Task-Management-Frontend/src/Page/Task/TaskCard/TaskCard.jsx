@@ -1,6 +1,17 @@
+import { IconButton, Menu, MenuItem } from "@mui/material";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import React from "react";
 
 const TaskCard = () => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const openMenu = Boolean(anchorEl);
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div>
       <div className="card lg:flex justify-between">
@@ -22,15 +33,34 @@ const TaskCard = () => {
 
             <div className="flex flex-wrap gap-2 items-center">
               {[1, 2, 3, 4].map((item) => (
-                <span
-                  key={item}
-                  className="py-1 px-5 rounded-full techStack techStack"
-                >
+                <span key={item} className="py-1 px-5 rounded-full techStack ">
                   React
                 </span>
               ))}
             </div>
           </div>
+        </div>
+        <div>
+          <IconButton
+            id="basic-button"
+            aria-controls={openMenu ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={openMenu ? "true" : undefined}
+            onClick={handleMenuClick}
+          >
+            <MoreVertIcon />
+          </IconButton>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={openMenu}
+            onClose={handleMenuClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+          </Menu>
         </div>
       </div>
     </div>
