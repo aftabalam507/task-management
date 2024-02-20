@@ -52,7 +52,7 @@ public class TaskServiceImpl implements TaskService {
 	@Override
 	public Task updateTask(Long id, Task updateTask, Long userId) throws Exception {
 		
-		Task existingTask = getTaskById(userId);
+		Task existingTask = getTaskById(id);
 		
 		if(updateTask.getTitle() != null) {
 			existingTask.setTitle(updateTask.getTitle());
@@ -91,7 +91,7 @@ public class TaskServiceImpl implements TaskService {
 	public Task assignedToUser(Long userId, Long taskId) throws Exception {
 		
 		Task task = getTaskById(taskId);
-		task.setAssigneUserId(userId);
+		task.setAssignedUserId(userId);
 		task.setStatus(TaskStatus.DONE);
 		
 		return this.taskRepository.save(task);

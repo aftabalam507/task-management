@@ -9,4 +9,5 @@ import com.task.modal.Task;
 public interface TaskRepository extends JpaRepository<Task, Long> {
 	
 	public List<Task> findByAssignedUserId(Long userId);
+	
 }
