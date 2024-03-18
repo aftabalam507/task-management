@@ -1,6 +1,11 @@
 import { IconButton, Menu, MenuItem } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import React from "react";
+import React, { useState } from "react";
+import UserList from "../UserList";
+import SubmissionList from "./SubmissionList";
+import EditTaskForm from "./EditTaskCard";
+
+const role = "ROLE_ADMIN";
 
 const TaskCard = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -10,6 +15,42 @@ const TaskCard = () => {
   };
   const handleMenuClose = () => {
     setAnchorEl(null);
+  };
+
+  const [openUserList, setOpenUserList] = useState(false);
+
+  const handleCloseUserList = () => {
+    setOpenUserList(false);
+  };
+
+  const handleOpenUserList = () => {
+    setOpenUserList(true);
+    handleMenuClose();
+  };
+
+  const [openSubmissionList, setOpenSubmissionList] = useState(false);
+
+  const handleCloseSubmissionList = () => {
+    setOpenSubmissionList(false);
+  };
+
+  const handleOpenSubmissionList = () => {
+    setOpenSubmissionList(true);
+    handleMenuClose();
+  };
+
+  const [openUpdateTaskForm, setOpenUpdateTaskForm] = useState(false);
+
+  const handleCloseUpdateTaskForm = () => {
+    setOpenUpdateTaskForm(false);
+  };
+
+  const handleOpenUpdateTaskForm = () => {
+    setOpenUpdateTaskForm(true);
+    handleMenuClose();
+  };
+  const handleDeleteTask = () => {
+    handleMenuClose();
   };
 
   return (
@@ -59,10 +100,30 @@ const TaskCard = () => {
               "aria-labelledby": "basic-button",
             }}
           >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+            {role === "ROLE_ADMIN" ? (
+              <>
+                <MenuItem onClick={handleOpenUserList}>Assined User</MenuItem>
+                <MenuItem onClick={handleOpenSubmissionList}>
+                  See Submissions
+                </MenuItem>
+                <MenuItem onClick={handleOpenUpdateTaskForm}>Edit</MenuItem>
+                <MenuItem onClick={handleDeleteTask}>Delete</MenuItem>
+              </>
+            ) : (
+              <></>
+            )}
           </Menu>
         </div>
       </div>
+      <UserList handleClose={handleCloseUserList} open={openUserList} />
+      <SubmissionList
+        handleClose={handleCloseSubmissionList}
+        open={openSubmissionList}
+      />
+      <EditTaskForm
+        handleClose={handleCloseUpdateTaskForm}
+        open={openUpdateTaskForm}
+      />
     </div>
   );
 };
